@@ -9,7 +9,7 @@
     width: 100%;
     border-radius: 50px;
     padding: 15px 30px;
-    font-size: 25px;
+    font-size: 20px;
     border: none;
     transition: 0.2s;
     box-shadow: inset 0 0 5px black;
@@ -55,8 +55,26 @@
     list-style:none;
 }
 
-.todos li{
+.todos .li_wrapper li{
+    min-width: 300px;
     background-color: goldenrod;
     padding: 20px 30px;
     margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.delete_icon, .done_icon{
+    font-size: 18px;
+    padding: 0 8px 0 5px;
+    cursor: pointer;
+}
+
+.delete_icon:hover, .done_icon:hover{
+    transform: scale(1.1);
+}
+
+.todos_action{
+    padding:0 4px;
 }
