@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, {useRef, useState } from 'react'
 import "./Style.css"
 import { Todo } from '../model';
+import TodoList from './TodoList';
 
 interface Props{
   todo:string;
@@ -18,14 +19,21 @@ const InputField:({ todo, setTodo}: Props) => JSX.Element= ({todo,setTodo}:Props
       setTodo("")
     }
   }
-  
-  console.log(todos)
+
+  const inputRef= useRef<HTMLInputElement>(null)
 
   return (
-    <form className='input' onSubmit={(e)=>{handleAdd(e)}} >
-        <input type='input' placeholder='Enter a Task' value={todo} onChange={(e)=>{setTodo(e.target.value)}} className='input_box'/>
-        <button className='input_submit' type='submit' >Go</button>
-    </form>
+    <>
+      <form className='input' onSubmit={
+        (e)=>{
+          handleAdd(e),
+          inputRef.current?.blur() 
+        }} >
+          <input ref={inputRef} type='input' placeholder='Enter a Task' value={todo} onChange={(e)=>{setTodo(e.target.value)}} className='input_box'/>
+          <button className='input_submit' type='submit' >Go</button>
+      </form>
+      <TodoList todos={todos} setTodos = {setTodos} />
+    </>
   )
 }
 
