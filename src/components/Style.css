@@ -35,3 +35,12 @@
     transition: 0.2s all;
     box-shadow: 0 0 10px black;
 }
+
+.input_submit:hover{
+    background-color: #2f74c0;
+}
+
+.input_submit:active{
+    transform: scale(0.8);
+    box-shadow: 0 0 5px black;
+}
